@@ -1,59 +1,27 @@
-
-function forEach (array, fun) {
-     for(let i = 0; i < array.length; i++) {
-        fun(array[i], i);
-     }
-}
-
-function moreThan(num, a) {
- return num > a;
-}
-
-
-
 function some(array, fun) {
-    let gotIt = false; 
-    forEach(array, function(elem, index) {
-        if (fun(elem, index)) {
-            gotIt = true;
+    for (let i = 0; i < array.length; i++) {
+        if (fun(array[i])) {
+            return true;
         }
-    });
-    return gotIt;
+    }
+    return false;
 }
-
 
 function every(array, fun) {
-    let allIsOk = true; // Assume all elements match
-    forEach(array, function(elem, index) {
-        if (!fun(elem, index)) {
-            allIsOk = false;
+    for (let i = 0; i < array.length; i++) {
+        if (!fun(array[i])) {
+            return false;
         }
-    });
-  return allIsOk;
+    }
+    return true;
 }
 
 
-array = [2, 3, 4];
-function elmGreaterIndex(elem, index) {
-    return elem > index
-}
+const array = [1, 3, 5, 7]; 
+console.log(`Using "some" function for even numbers in ${array}: ${some(array, evenNumber)} - Expected: false`);
 
+const array2 = [2, 4, 6, 8]; 
+console.log(`Using "some" function for even numbers in ${array2}: ${some(array2, evenNumber)} - Expected: true`);
 
-
-let array1 = [1, 0, 0, -9];
-let array2 = [-7, 0, -1000];
-
-
-let si = some(array1, function(elem) {
-    return moreThan(elem, 1);
-});
-console.log(`Result of some: ${si}`);
-
-let su = every(array1, function(elem) {
-    return moreThan(elem, 0);
-});
-
-
-console.log(`Result of every: ${su}`);
-console.log(`Result of elements Greater than index for every: ${every(array1, function (elem, index) { return elmGreaterIndex(elem, index); })}`);
-console.log(`Result of elements Greater than index for some: ${some(array2, function(elem, index){return elmGreaterIndex(elem, index);})}`);
+console.log(`Using "every" function for even numbers in ${array}: ${every(array, evenNumber)} - Expected: false`);
+console.log(`Using "every" function for even numbers in ${array2}: ${every(array2, evenNumber)} - Expected: true`);
