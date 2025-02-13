@@ -5,7 +5,7 @@ function some(array, fun) {
         }
     }
     return false;
-}
+};
 
 function evenNumber(num) {
     return num % 2 === 0;
