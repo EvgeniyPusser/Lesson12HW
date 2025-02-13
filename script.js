@@ -7,6 +7,10 @@ function some(array, fun) {
     return false;
 }
 
+function evenNumber(num) {
+    return num % 2 === 0;
+}
+
 function every(array, fun) {
     for (let i = 0; i < array.length; i++) {
         if (!fun(array[i])) {
