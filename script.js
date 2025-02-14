@@ -1,19 +1,25 @@
 function some(array, fun) {
     let result = false;
-    for (let i = 0; i < array.length; i++) {
+    let i = 0;
+    while ( i < array.length && !result ) {
+        
         if (fun(array[i], i)) {
             result = true;
         }
+        i++;
     }
     return result;
 }
 
 function every(array, fun) {
     let result = true;
-    for (let i = 0; i < array.length; i++) {
+    let i = 0;
+    while (i < array.length && result ) {
+      
         if (!fun(array[i], i)) {
             result = false;
         }
+          i++;
     }
     return result;
 }
